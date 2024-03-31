@@ -5,7 +5,10 @@
     description: "warnings and error handling library",
     url: "https://github.com/dvrd/failz",
     readme: "",
-    license: "",
+    license: "MIT",
     keywords: [],
-    dependencies: {}
+    dependencies: {
+        "github.com/dvrd/ansi": "0.1.0"
+    }
 }
+
