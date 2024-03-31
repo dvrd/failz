@@ -1,5 +1,6 @@
 package failz
 
+import "core:encoding/json"
 import "core:fmt"
 import "core:mem"
 import "core:os"
@@ -7,12 +8,14 @@ import "core:strings"
 import "libs:ansi"
 
 AllocError :: mem.Allocator_Error
+UnmarshalError :: json.Unmarshal_Error
 
 ErrorKind :: enum {
 	FileOpen,
 	FileRead,
 	FileWrite,
 	FileRemove,
+	DirectoryOpen,
 	DirectoryCreate,
 	DirectoryRead,
 	DirectoryRemove,
@@ -26,6 +29,7 @@ SystemError :: struct {
 Error :: union {
 	AllocError,
 	SystemError,
+	UnmarshalError,
 	Errno,
 	bool,
 }
@@ -159,4 +163,3 @@ Errno :: enum {
 	EQFULL          = 106, /* Interface output queue is full */
 	ELAST           = 106, /* Must be equal largest errno */
 }
-

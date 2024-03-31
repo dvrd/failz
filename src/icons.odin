@@ -2,6 +2,7 @@ package failz
 
 import "libs:ansi"
 
+// This icons requires a nerd font installed to be displayed correctly
 INFO := ansi.bold(ansi.colorize("  ", {80, 150, 225}))
 ERROR := ansi.colorize("  ", {220, 20, 60})
 WARNING := ansi.colorize("  ", {255, 210, 0})
