@@ -1,13 +1,14 @@
 {
-    name: "failz",
-    owner: "Dan<dan@devoured.io>",
-    version: "0.1.0",
-    description: "warnings and error handling library",
-    url: "https://github.com/dvrd/failz",
-    readme: "",
-    license: "MIT",
-    keywords: [],
-    dependencies: {
+    "name": "failz",
+    "url": "https://github.com/dvrd/failz",
+    "root": "src",
+    "readme": "",
+    "description": "Personal error management library",
+    "version": "0.1.0",
+    "license": "",
+    "root": "",
+    "keywords": [],
+    "dependencies": {
         "github.com/dvrd/ansi": "0.1.0"
     }
 }
