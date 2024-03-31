@@ -1,15 +1,16 @@
 {
     "name": "failz",
-    "url": "https://github.com/dvrd/failz",
+    "owner": "Dan<dan@devoured.io>",
+    "url": "github.com/dvrd/failz",
     "root": "src",
     "readme": "",
     "description": "Personal error management library",
-    "version": "0.1.0",
+    "version": "0.0.1",
     "license": "",
     "root": "",
     "keywords": [],
     "dependencies": {
-        "github.com/dvrd/ansi": "0.1.0"
+        "github.com/dvrd/ansi": "0.0.1"
     }
 }
 
