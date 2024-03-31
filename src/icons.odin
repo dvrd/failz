@@ -15,12 +15,12 @@ BAIL := ansi.colorize("  ", {0, 144, 255})
 check_icons_enabled :: proc() {
 	is_enabled := os.get_env("FAILZ_ICONS_ENABLED") == "true"
 	if !is_enabled {
-		INFO = ""
-		ERROR = ""
-		WARNING = ""
-		MESSAGE = ""
-		DEBUG = ""
-		PROMPT = ""
-		BAIL = ""
+		INFO = "[INFO]"
+		ERROR = "[ERROR]"
+		WARNING = "[WARNING]"
+		MESSAGE = "[MESSAGE]"
+		DEBUG = "[DEBUG]"
+		PROMPT = "[PROMPT]"
+		BAIL = "[BAIL]"
 	}
 }
