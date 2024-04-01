@@ -1,5 +1,6 @@
 package failz
 
+import "core:compress"
 import "core:encoding/json"
 import "core:fmt"
 import "core:mem"
@@ -9,6 +10,7 @@ import "libs:ansi"
 
 AllocError :: mem.Allocator_Error
 UnmarshalError :: json.Unmarshal_Error
+CompressionError :: compress.Error
 
 ErrorKind :: enum {
 	FileOpen,
@@ -29,6 +31,7 @@ SystemError :: struct {
 Error :: union {
 	AllocError,
 	SystemError,
+	CompressionError,
 	UnmarshalError,
 	Errno,
 	bool,

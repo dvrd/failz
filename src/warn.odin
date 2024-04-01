@@ -13,6 +13,12 @@ warn :: proc(err: Error = true, msg := "") {
 		case json.Error, json.Unmarshal_Data_Error, json.Unsupported_Type_Error:
 			fmt.eprintln(WARNING, msg, ue)
 		}
+	case CompressionError:
+		if e == nil {return}
+		switch ce in e {
+		case compress.General_Error, compress.Deflate_Error, compress.ZLIB_Error, compress.GZIP_Error, compress.ZIP_Error, runtime.Allocator_Error:
+			fmt.eprintln(WARNING, msg, ce)
+		}
 	case SystemError:
 		fmt.eprintln(WARNING, msg, e.msg)
 	case Errno:

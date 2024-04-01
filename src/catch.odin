@@ -32,6 +32,13 @@ catch :: proc(err: Error, msg: string = "", should_exit := true, location := #ca
 			fmt.sbprint(&sb, MESSAGE, ue)
 		}
 		fmt.eprintln(strings.to_string(sb))
+	case CompressionError:
+		if e == nil {return}
+		switch ce in e {
+		case compress.General_Error, compress.Deflate_Error, compress.ZLIB_Error, compress.GZIP_Error, compress.ZIP_Error, runtime.Allocator_Error:
+			fmt.sbprint(&sb, MESSAGE, ce)
+		}
+		fmt.eprintln(strings.to_string(sb))
 	case SystemError:
 		fmt.sbprint(&sb, MESSAGE, purple(fmt.tprintf("[%v]", e.kind)), e.msg)
 		fmt.eprintln(strings.to_string(sb))
