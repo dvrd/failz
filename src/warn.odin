@@ -1,5 +1,6 @@
 package failz
 
+import "core:compress"
 import "core:encoding/json"
 import "core:fmt"
 import "core:os"
@@ -15,8 +16,8 @@ warn :: proc(err: Error = true, msg := "") {
 		}
 	case CompressionError:
 		if e == nil {return}
-		switch ce in e {
-		case compress.General_Error, compress.Deflate_Error, compress.ZLIB_Error, compress.GZIP_Error, compress.ZIP_Error, runtime.Allocator_Error:
+		#partial switch ce in e {
+		case compress.General_Error, compress.Deflate_Error, compress.ZLIB_Error, compress.GZIP_Error, compress.ZIP_Error, AllocError:
 			fmt.eprintln(WARNING, msg, ce)
 		}
 	case SystemError:
