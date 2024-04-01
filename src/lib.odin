@@ -3,6 +3,7 @@ package failz
 import "core:compress"
 import "core:encoding/json"
 import "core:fmt"
+import "core:io"
 import "core:mem"
 import "core:os"
 import "core:strings"
@@ -11,6 +12,7 @@ import "libs:ansi"
 AllocError :: mem.Allocator_Error
 UnmarshalError :: json.Unmarshal_Error
 CompressionError :: compress.Error
+IOError :: io.Error
 
 ErrorKind :: enum {
 	FileOpen,
@@ -33,6 +35,7 @@ Error :: union {
 	SystemError,
 	CompressionError,
 	UnmarshalError,
+	IOError,
 	Errno,
 	bool,
 }

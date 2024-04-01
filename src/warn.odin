@@ -6,7 +6,7 @@ import "core:os"
 
 warn :: proc(err: Error = true, msg := "") {
 	#partial switch e in err {
-	case AllocError:
+	case AllocError, IOError:
 		fmt.eprintln(WARNING, msg, e)
 	case UnmarshalError:
 		switch ue in e {
