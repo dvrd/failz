@@ -14,7 +14,7 @@ UnmarshalError :: json.Unmarshal_Error
 CompressionError :: compress.Error
 IOError :: io.Error
 
-ErrorKind :: enum {
+SystemErrorKind :: enum {
 	FileOpen,
 	FileRead,
 	FileWrite,
@@ -26,18 +26,34 @@ ErrorKind :: enum {
 }
 
 SystemError :: struct {
+	kind: SystemErrorKind,
+	msg:  string,
+}
+
+ErrorKind :: enum {
+	Compression,
+	WrongFormat,
+	InvalidSize,
+}
+
+AppError :: struct {
 	kind: ErrorKind,
 	msg:  string,
 }
 
 Error :: union {
-	AllocError,
+	bool,
+
+	// Personal errors
+	AppError,
 	SystemError,
+
+	// Aliases to Odin internal errors
+	Errno,
+	AllocError,
 	CompressionError,
 	UnmarshalError,
 	IOError,
-	Errno,
-	bool,
 }
 
 Errno :: enum {

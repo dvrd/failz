@@ -7,7 +7,9 @@ import "core:os"
 
 warn :: proc(err: Error = true, msg := "") {
 	#partial switch e in err {
-	case AllocError, IOError:
+	case AllocError:
+		fmt.eprintln(WARNING, msg, e)
+	case IOError:
 		fmt.eprintln(WARNING, msg, e)
 	case UnmarshalError:
 		switch ue in e {
@@ -21,6 +23,8 @@ warn :: proc(err: Error = true, msg := "") {
 			fmt.eprintln(WARNING, msg, ce)
 		}
 	case SystemError:
+		fmt.eprintln(WARNING, msg, e.msg)
+	case AppError:
 		fmt.eprintln(WARNING, msg, e.msg)
 	case Errno:
 		if e != .ERROR_NONE {fmt.eprintln(WARNING, msg, os.get_last_error_string())}

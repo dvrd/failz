@@ -44,6 +44,9 @@ catch :: proc(err: Error, msg: string = "", should_exit := true, location := #ca
 		if e == nil {return}
 		fmt.sbprint(&sb, MESSAGE, e)
 		fmt.eprintln(strings.to_string(sb))
+	case AppError:
+		fmt.sbprint(&sb, MESSAGE, purple(fmt.tprintf("[%v]", e.kind)), e.msg)
+		fmt.eprintln(strings.to_string(sb))
 	case SystemError:
 		fmt.sbprint(&sb, MESSAGE, purple(fmt.tprintf("[%v]", e.kind)), e.msg)
 		fmt.eprintln(strings.to_string(sb))
